@@ -12,7 +12,7 @@ public class Atleta extends Participante {
 	private float altura;
 	private float peso;
 	LocalDate fechaNac;
-
+//
 	private DatosPersona persona;
 	//Examen 5 ejercicio 4: implementar el submenu
 	public static Atleta nuevoAtleta() {
