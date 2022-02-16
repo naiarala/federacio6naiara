@@ -1,5 +1,9 @@
 package entidades;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 import utils.Datos;
@@ -90,4 +94,43 @@ public class Colegiado {
 		return ret;
 	}
 
+	// Examen 7-Ejercicio 2
+	/**
+	 * Funcion para importar los ficheros de colegiados
+	 */
+	public static void Colegiados() {
+		String path = "colegiadosjunior.dat, colegiadossenior.dat, colegiadosespecial.dat";
+		try {
+
+			FileOutputStream fichero = new FileOutputStream(path, false);
+
+			ObjectOutputStream escritor = new ObjectOutputStream(fichero);
+
+			for (Colegiado c : Datos.COLEGIADOS) {
+
+				if (c.getPersona().getId().getCategoria) {
+
+					escritor.writeObject((Colegiado) c);
+
+					escritor.flush();
+
+				}
+				escritor.close();
+
+			}
+		} catch (FileNotFoundException e) {
+
+			System.out.println("Se ha producido una FileNotFoundException" + e.getMessage());
+
+		} catch (IOException e) {
+
+			System.out.println("Se ha producido una IOException" + e.getMessage());
+
+		} catch (Exception e) {
+
+			System.out.println("Se ha producido una Exception" + e.getMessage());
+
+		}
+
+	}
 }

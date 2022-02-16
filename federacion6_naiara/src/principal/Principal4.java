@@ -1,9 +1,14 @@
 package principal;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 import entidades.*;
 import utils.*;
+import validaciones.Validaciones;
 
 public class Principal4 {
 
@@ -372,7 +377,9 @@ public class Principal4 {
 
 	// Ejercicio 1 de la prueba 6
 	/**
-	 * Para validar el login es necesario validar por separado el nombre de usuario y el password
+	 * Para validar el login es necesario validar por separado el nombre de usuario
+	 * y el password
+	 * 
 	 * @param cred
 	 * @return
 	 */
@@ -403,5 +410,71 @@ public class Principal4 {
 //				return false;
 //		// Por el momento siempre devolverá true
 		return true;
+	}
+
+	// Examen 7-Ejercicio 1
+	/**
+	 * Funcion para tipo de prueba (en este caso, es de tipo individual)
+	 */
+	private static boolean individual(Prueba ind) {
+		long id = -1;
+		DatosPersona dp = null;
+		Scanner in;
+		boolean valido = false;
+		do {
+			System.out.println("Introduzca los datos personales:");
+			in = new Scanner(System.in);
+			id = in.nextInt();
+			if (id > 0)
+				valido = true;
+			else
+				System.out.println("Valor incorrecto para el identificador.");
+		} while (!valido);
+
+		valido = false;
+
+		FileReader lector = null;
+		BufferedReader buffer = null;
+		String path = "pruebas.txt";
+		File fichero = new File(path);
+
+		FileWriter escritor = null;
+
+		PrintWriter buffer = null;
+		try {
+			try {
+
+				escritor = new FileWriter(fichero, false);
+
+				buffer = new PrintWriter(escritor);
+
+				for (Prueba p : Datos.PRUEBAS) {
+
+					buffer.println(p.data());
+
+				}
+
+			} finally {
+
+				if (buffer != null) {
+
+					buffer.close();
+
+				}
+
+				if (escritor != null) {
+
+					escritor.close();
+
+				}
+
+			}
+
+			System.out.println("¿Son correctos los datos?");
+			System.out.println("Introduzca 's' en caso afirmativo y 'n' en caso contrario:");
+			return false;
+
+		} finally {
+		}
 	}
 }
