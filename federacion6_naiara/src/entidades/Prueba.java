@@ -260,5 +260,16 @@ public class Prueba {
 		ret = new Prueba(id, nombre, fecha, lugar, ind);
 		return ret;
 	}
+	/***
+	 * Método data()
+	 * @return
+	 * Método creado para poder hacer el ejercicio 1 apartado B del examen 8
+	 */
+	public String data() {
+		String ret = "";
+		ret = this.id + "|" + this.nombre + "|" + this.fecha + "|" + this.lugar + "|"
+				+ this.individual;
+		return ret;
+	}
 
 }
